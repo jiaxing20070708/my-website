@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>后台 - 留言管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            background: #f5f7fa;
+            padding: 30px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .toolbar {
+            margin-bottom: 15px;
+        }
+        button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .clear {
+            background: #f56c6c;
+            color: #fff;
+        }
+        .item {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .item.unread {
+            border-left: 4px solid #409eff;
+        }
+        .item .info {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .item .content {
+            white-space: pre-wrap;
+        }
+        .empty {
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+
+<h1>客户留言管理</h1>
+
+<div class="toolbar">
+    <button onclick="loadMessages()">刷新</button>
+    <button class="clear" onclick="clearMessages()">清空全部</button>
+</div>
+
+<div id="list"></div>
+
+<script>
+    function loadMessages() {
+        const list = JSON.parse(localStorage.getItem('messages') || '[]');
+        const box = document.getElementById('list');
+
+        if (list.length === 0) {
+            box.innerHTML = '<p class="empty">暂无留言</p >';
+            return;
+        }
+
+        box.innerHTML = list.map(item => `
+            <div class="item ${item.read ? '' : 'unread'}">
+                <div class="info">
+                    <strong>${item.name}</strong> |
+                    联系方式：${item.contact} |
+                    预算：${item.budget || '未填'} |
+                    时间：${item.time}
+                </div>
+                <div class="content">${item.message}</div>
+            </div>
+        `).join('');
+    }
+
+    function clearMessages() {
+        if (confirm('确定要清空所有留言吗？')) {
+            localStorage.removeItem('messages');
+            loadMessages();
+        }
+    }
+
+    loadMessages();
+</script>
+
+</body>
+</html>
