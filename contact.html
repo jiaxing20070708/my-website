@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系我 - 接单作品集</title>
+    <style>
+        body { margin: 0; font-family: "Microsoft YaHei", sans-serif; background: #f8f9fa; color: #333; }
+        header { background: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        nav a { margin-left: 15px; text-decoration: none; color: #555; }
+        .hero { background: #4facfe; color: #fff; padding: 60px 20px; text-align: center; }
+        .hero h1 { margin: 0 0 10px; font-size: 28px; }
+        .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        .form-card { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: bold; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; font-family: inherit; }
+        .form-group textarea { height: 120px; resize: vertical; }
+        button { background: #4facfe; color: #fff; border: none; padding: 12px 30px; font-size: 16px; border-radius: 4px; cursor: pointer; width: 100%; }
+        button:hover { background: #3a9ee5; }
+        .tip { font-size: 13px; color: #888; margin-top: 15px; text-align: center; }
+    </style>
+</head>
+<body>
+    <header>
+        <div><strong>我的接单作品集</strong></div>
+        <nav>
+            <a href=" ">首页</a >
+            <a href="#服务">服务</a >
+            <a href="#作品">作品</a >
+            <a href="contact.html">联系我</a >
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>联系我 · 接单咨询</h1>
+        <p>填写下方表单，我会尽快通过微信/邮箱联系你</p >
+    </div>
+
+    <div class="container">
+        <div class="form-card">
+            <!-- 核心接入：FormSubmit 直接发往你的 QQ 邮箱 -->
+            <form action="https://formsubmit.co/2923459562@qq.com" method="POST">
+                <!-- 隐藏配置：成功后跳转到首页，开启验证码防机器 -->
+                <input type="hidden" name="_next" value="https://your-github-username.github.io/index.html">
+                <input type="hidden" name="_captcha" value="true">
+                
+                <div class="form-group">
+                    <label>称呼 *</label>
+                    <input type="text" name="称呼" required placeholder="怎么称呼你">
+                </div>
+                <div class="form-group">
+                    <label>邮箱 *</label>
+                    <input type="email" name="邮箱" required placeholder="用于回复方案">
+                </div>
+                <div class="form-group">
+                    <label>微信 / 手机号 *</label>
+                    <input type="text" name="联系方式" required placeholder="方便我直接加你沟通">
+                </div>
+                <div class="form-group">
+                    <label>项目预算（选填）</label>
+                    <select name="预算">
+                        <option value="300左右">300元左右（单页）</option>
+                        <option value="800左右">800元左右（官网）</option>
+                        <option value="2000+">2000元以上（后台系统）</option>
+                        <option value="待沟通">待沟通</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>需求描述 *</label>
+                    <textarea name="需求描述" required placeholder="简单描述你想做的网站功能、页面数、交期等..."></textarea>
+                </div>
+                
+                <button type="submit">提交咨询</button>
+                <div class="tip">首次提交需去 QQ 邮箱点确认，之后留言直接送达</div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
